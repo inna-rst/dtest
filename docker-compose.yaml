@@ -1,11 +1,36 @@
-version: "3.9"
+version: '3'
 
 services:
   api:
-    # Add configuration here
+    build:
+      context: ./backend  
+      dockerfile: deployment/Dockerfile
+    ports:
+      - "4001:4001"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgres://postgres:postgres@database:5432/postgres
+      - PORT=4001
+    depends_on:
+      - database
 
   web:
-    # Add configuration here
+    build:
+      context: ./frontend
+      dockerfile: deployment/Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - api
 
   database:
-    # Add configuration here
+    image: postgres:14
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
