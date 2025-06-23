@@ -1,7 +1,7 @@
 import Fastify from 'fastify';
 import cors from '@fastify/cors'
-import { config } from './config';
-import { database } from './database';
+import { config } from './config.js';
+import { database } from './database.js';
 
 const start = async () => {
   const fastify = Fastify({
