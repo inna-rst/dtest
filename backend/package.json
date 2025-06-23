@@ -12,13 +12,17 @@
     "pg": "8.12.0"
   },
   "devDependencies": {
-    "@types/node": "^24.0.3",
-    "ts-node-dev": "2.0.0",
+    "@types/node": "^20.0.0",
+    "@types/pg": "^8.11.0",
+    "ts-node": "^10.9.0",
+    "tsx": "^4.0.0",
     "typescript": "5.5.3"
   },
   "scripts": {
-    "start": "ts-node-dev --respawn --inspect -- src/index.ts",
+    "start": "tsx watch src/index.ts",
+    "start:dev": "tsx watch --inspect src/index.ts",
     "build": "tsc -p tsconfig.json",
-    "serve": "node build/index.js"
+    "serve": "node build/index.js",
+    "dev": "tsx watch src/index.ts"
   }
 }
