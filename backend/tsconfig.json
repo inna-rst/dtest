@@ -1,3 +1,4 @@
+
 {
   "compilerOptions": {
     "lib": ["es2023"],
@@ -9,6 +10,11 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node16"
-  }
+    "moduleResolution": "node16",
+    
+    "types": ["node"],
+    "typeRoots": ["./node_modules/@types"]
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }
